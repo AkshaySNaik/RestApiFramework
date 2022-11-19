@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="RestApiFramework">
+	<listeners>
+		<listener class-name="com.restapi.utilities.ExtentListener"></listener>
+	</listeners>
+	<test thread-count="5" name="Api Test">
+		<classes>
+			<class name="com.restapi.testcase.TC01_GetAllEmpTest" />
+			<class name="com.restapi.testcase.TC02_PostEmpTest" />
+			<class name="com.restapi.testcase.TC03_GetSingleEmpTest" />
+			<class name="com.restapi.testcase.TC04_PutEmpDetailTest" />
+			<class name="com.restapi.testcase.TC05_DeleteEmpRecordTest" />	
+		</classes>
+	</test> <!-- Test -->
+</suite> <!-- Suite -->
