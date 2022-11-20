@@ -12,9 +12,9 @@ public class TC01_GetAllEmpTest extends BaseClass {
 	public void getAllEmployees() {
 
 		log.info("********** Started TC01_GetAllEmpTest **************");
-		RestAssured.baseURI = "http://dummy.restapiexample.com/api/v1/";
+		RestAssured.baseURI = "https://petstore.swagger.io/v2/pet/";
 		httprequest = RestAssured.given();
-		response = httprequest.request(Method.GET, "employees");
+		response = httprequest.request(Method.GET, "findByStatus?status=available");
 		try {
 			Thread.sleep(3000);
 		} catch (Throwable e) {

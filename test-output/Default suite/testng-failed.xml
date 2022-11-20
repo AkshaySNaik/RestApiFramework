@@ -5,9 +5,6 @@
     <classes>
       <class name="com.restapi.testcase.TCAll_RestApi">
         <methods>
-          <include name="getAllEmpRecords"/>
-          <include name="postNewEmpRecord"/>
-          <include name="putEmpRecord"/>
           <include name="deleteEmpRecord"/>
         </methods>
       </class> <!-- com.restapi.testcase.TCAll_RestApi -->
