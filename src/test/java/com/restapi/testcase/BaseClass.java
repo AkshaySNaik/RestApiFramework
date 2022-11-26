@@ -14,6 +14,7 @@ import io.restassured.specification.RequestSpecification;
 public class BaseClass {
 
 	public static ReadConfig config = new ReadConfig();
+	String URI = config.getUrl();
 
 	public static RequestSpecification httprequest;
 	public static Response response;

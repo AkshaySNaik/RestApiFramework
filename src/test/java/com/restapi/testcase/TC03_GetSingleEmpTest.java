@@ -15,7 +15,7 @@ public class TC03_GetSingleEmpTest extends BaseClass {
 
 		log.info("********** Started TC03_GetSingleEmployeeDetails **************");
 
-		RestAssured.baseURI = "http://dummy.restapiexample.com/api/v1/";
+		RestAssured.baseURI = URI;
 		httprequest = RestAssured.given();
 		response = httprequest.request(Method.GET, "employee/" + empid);
 

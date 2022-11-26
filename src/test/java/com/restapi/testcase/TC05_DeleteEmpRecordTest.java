@@ -9,13 +9,13 @@ import io.restassured.http.Method;
 public class TC05_DeleteEmpRecordTest extends BaseClass {
 
 	String empid = config.getEmpId();
-	
+
 	@Test(priority = 1)
 	public void deleteEmployeRecord() {
 
 		log.info("********** Started TC05_DeleteEmployeeRecords **************");
 
-		RestAssured.baseURI = "http://dummy.restapiexample.com/api/v1/";
+		RestAssured.baseURI = URI;
 		httprequest = RestAssured.given();
 
 		response = httprequest.request(Method.DELETE, "delete/" + empid);
@@ -26,7 +26,7 @@ public class TC05_DeleteEmpRecordTest extends BaseClass {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@Test(priority = 2)
 	public void checkResponseBody() {
 
@@ -34,7 +34,7 @@ public class TC05_DeleteEmpRecordTest extends BaseClass {
 
 		String responsebody = response.getBody().asString();
 		log.info("Response Body ==>" + responsebody);
-		Assert.assertEquals(responsebody.contains("Successfully! Record has been deleted"),true);
+		Assert.assertEquals(responsebody.contains("Successfully! Record has been deleted"), true);
 
 	}
 

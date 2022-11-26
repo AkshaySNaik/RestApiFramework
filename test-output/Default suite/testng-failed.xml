@@ -5,7 +5,7 @@
     <classes>
       <class name="com.restapi.testcase.TCAll_RestApi">
         <methods>
-          <include name="deleteEmpRecord"/>
+          <include name="putEmpRecord" invocation-numbers="0 1 2 3"/>
         </methods>
       </class> <!-- com.restapi.testcase.TCAll_RestApi -->
     </classes>

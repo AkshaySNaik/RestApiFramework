@@ -4,34 +4,36 @@ import org.json.simple.JSONObject;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import com.restapi.utilities.MyXLSReader;
+
 import io.restassured.RestAssured;
 import io.restassured.http.Method;
 
 public class TC02_PostEmpTest extends BaseClass {
 
+	MyXLSReader xlsreader;
 	String sname = "Ravi" + getRandomStringAlpha(2);
-	String ssalary = getRandomStringNumeric(4);
+	String ssid = getRandomStringNumeric(4);
 	String sage = getRandomStringNumeric(2);
 
 	@SuppressWarnings("unchecked")
-	@Test(priority = 1)
+	@Test(priority = 1, dataProvider = "TestDatas")
 	public void postEmpDetailRequest() {
 
 		log.info("************** Started TC02_PostEmpTest Started *****************");
 
-		RestAssured.baseURI = "http://dummy.restapiexample.com/api/v1/";
+		RestAssured.baseURI = URI;
 		httprequest = RestAssured.given();
 
 		JSONObject data = new JSONObject();
-		data.put("name", sname);
-		data.put("salary", ssalary);
-		data.put("age", sage);
+		data.put("id", ssid);
+		data.put("username", sname);
 
 		httprequest.header("Content-Type", "application/json");
 
 		httprequest.body(data.toJSONString());
 
-		response = httprequest.request(Method.POST, "create");
+		response = httprequest.request(Method.POST, "v2/user");
 
 		try {
 			Thread.sleep(5000);
@@ -48,10 +50,8 @@ public class TC02_PostEmpTest extends BaseClass {
 
 		String responsebody = response.getBody().asString();
 		log.info("Response Body ==>" + responsebody);
-		Assert.assertEquals(responsebody.contains(sname), true);
-		Assert.assertEquals(responsebody.contains(ssalary), true);
-		Assert.assertEquals(responsebody.contains(sage), true);
-
+		Assert.assertEquals(responsebody.contains(ssid), true);
+		Assert.assertTrue(responsebody.contains("200"));
 	}
 
 	@Test(priority = 3)
@@ -72,10 +72,10 @@ public class TC02_PostEmpTest extends BaseClass {
 		long responsetime = response.getTime();
 		log.info("Response Time ==>" + responsetime);
 
-		if (responsetime > 6000) {
-			log.warn("Response Time Is Greater Than 6000");
+		if (responsetime > 5000) {
+			log.warn("Response Time Is Greater Than 5000");
 		}
-		Assert.assertTrue(responsetime < 6000);
+		Assert.assertTrue(responsetime < 5000);
 	}
 
 	@Test(priority = 5)
@@ -121,7 +121,7 @@ public class TC02_PostEmpTest extends BaseClass {
 
 	}
 
-	@Test(priority = 9)
+	// @Test(priority = 9)
 	public void checkContentLength() {
 
 		log.info("** Checking Content Length **");

@@ -30,5 +30,16 @@ public class ReadConfig {
 		else
 			throw new RuntimeException("Employee ID Not Found In Properties File");
 	}
+	
+	public String getUrl() {
+		
+		String url = prop.getProperty("URL");
+		if(url!=null)
+			return url;
+		else
+			throw new RuntimeException("Employee ID Not Found In Properties File");
+	}
+	
+	
 
 }

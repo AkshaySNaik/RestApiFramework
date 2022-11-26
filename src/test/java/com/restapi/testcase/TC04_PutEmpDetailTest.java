@@ -20,7 +20,7 @@ public class TC04_PutEmpDetailTest extends BaseClass {
 
 		log.info("********** Started TC04_PutEmployeeDetails **************");
 
-		RestAssured.baseURI = "http://dummy.restapiexample.com/api/v1/";
+		RestAssured.baseURI = URI;
 		httprequest = RestAssured.given();
 
 		JSONObject data = new JSONObject();
@@ -38,7 +38,6 @@ public class TC04_PutEmpDetailTest extends BaseClass {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	@Test(priority = 2)
@@ -51,7 +50,6 @@ public class TC04_PutEmpDetailTest extends BaseClass {
 		Assert.assertTrue(responsebody.contains(sname));
 		Assert.assertTrue(responsebody.contains(ssalary));
 		Assert.assertTrue(responsebody.contains(sage));
-
 	}
 
 	@Test(priority = 3)
